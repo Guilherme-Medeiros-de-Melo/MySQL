@@ -1,0 +1,43 @@
+CREATE TABLE Comanda 
+( 
+ IDCo INT PRIMARY KEY AUTO_INCREMENT,  
+ Data DATE,  
+ IDC INT,  
+); 
+
+CREATE TABLE Produto 
+( 
+ IDP INT PRIMARY KEY AUTO_INCREMENT,  
+ Nome VARCHAR(n),  
+ Preço FLOAT,  
+ Tipo VARCHAR(n),  
+ Qnt_estoque INT,  
+); 
+
+CREATE TABLE Cliente 
+( 
+ Nome VARCHAR(n),  
+ IDC INT PRIMARY KEY AUTO_INCREMENT,  
+); 
+
+CREATE TABLE Logradouro 
+( 
+ IDC INT PRIMARY KEY,  
+ Numero INT,  
+ Rua VARCHAR(n),  
+ Bairro VARCHAR(n),  
+ Cidade VARCHAR(n),  
+); 
+
+CREATE TABLE Comanda_produto 
+( 
+ IDCo INT PRIMARY KEY,  
+ ID INT PRIMARY KEY AUTO_INCREMENT,  
+ Qnt INT,  
+ IDP INT,  
+); 
+
+ALTER TABLE Comanda ADD FOREIGN KEY(IDC) REFERENCES Cliente (IDC)
+ALTER TABLE Logradouro ADD FOREIGN KEY(IDC) REFERENCES Cliente (IDC)
+ALTER TABLE Comanda_produto ADD FOREIGN KEY(IDCo) REFERENCES Comanda (IDCo)
+ALTER TABLE Comanda_produto ADD FOREIGN KEY(IDP) REFERENCES Produto (IDP)
